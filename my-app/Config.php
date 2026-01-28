@@ -1,8 +1,8 @@
 <?php
 define('DBSERVER', 'localhost'); // Database server
 define('DBUSERNAME', 'root'); // Database username
-define('DBPASSWORD', ''); // Database password
-define('DBNAME', 'demo'); // Database name
+define('DBPASSWORD', 'root'); // Database password
+define('DBNAME', 'quick fix-it'); // Database name
  
 /* connect to MySQL database */
 $db = mysqli_connect(DBSERVER, DBUSERNAME, DBPASSWORD, DBNAME);

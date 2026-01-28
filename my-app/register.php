@@ -1,5 +1,10 @@
+<?php
+
 require_once "config.php";
 require_once "session.php";
+
+$error = '';
+$success = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
@@ -17,11 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 	// Store the result so we can check if the account exists in the database.
 	$query->store_result();
         if ($query->num_rows > 0) {
-            $error .= '<p class="error">The email address is already registered!</p>';
+            $error .= '<p2 class="error">The email address is already registered!</p2>';
         } else {
             // Validate password
             if (strlen($password ) < 6) {
-                $error .= '<p class="error">Password must have atleast 6 characters.</p>';
+                $error .= '<p2 class="error">Password must have atleast 6 characters.</p2>';
             }
 
             // Validate confirm password
@@ -38,27 +43,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $result = $insertQuery->execute();
                 if ($result) {
                     $error .= '<p class="success">Your registration was successful!</p>';
+					    $query->close();
+                        $insertQuery->close();
                 } else {
                     $error .= '<p class="error">Something went wrong!</p>';
                 }
             }
         }
     }
-    $query->close();
-    $insertQuery->close();
     // Close DB connection
     mysqli_close($db);
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
+<!doctype html>
+<html>
+<head>
+ <meta charset="UTF-8">
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light Theme</title>
+<link href="css/simpleGridTemplate.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap-4.4.1.css" rel="stylesheet" type="text/css">
+</head>
+	
+	
+<body>
+<!-- Main Container -->
+<div class="container"> 
+  <!-- Header -->
+  <header class="header">
+    <h4 class="logo">Membership Sign-up</h4>
+  </header>
+  <!-- Hero Section -->
+  <section class="intro">
+    <div class="column">
+      <h3>Quick fix-it</h3>
+      <img src="images/logo.png" alt="" height ="300" width="300" class=""> </div>
+    <div class="column" style="padding-left: 250px">
+ <head>
         <meta charset="UTF-8">
         <title>Sign Up</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     </head>
     <body>
-        <div class="container">
+  <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h2>Register</h2>
@@ -89,6 +119,90 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     </form>
                 </div>
             </div>
-        </div>    
+        </div>     
     </body>
+    </div>
+  </section>
+<!-- Stats Gallery Section -->
+  <div class="gallery">
+	  <h1>benefits:</h1>
+    <div class="thumbnail"> <a href="#"><img src="images/wallet.jpg" alt="" height="200" width="300" class="cards"/></a>
+      <h4>Price</h4>
+      <p class="tag">What we offer:</p>
+      <p class="text_column">On avarage our members end up paying less per visit than none members.</p>
+    </div>
+    <div class="thumbnail"> <a href="#" target="_self"><img src="images/promo2.jpg" alt="" height ="200" width="300" class="cards"/></a>
+      <h4>Promo</h4>
+      <p class="tag">What we offer:</p>
+      <p class="text_column">By signing up you have the option to have promo material sent to you through email&nbsp;</p>
+    </div>
+    <div class="thumbnail"> <a href="#"><img src="images/point.jpg"images/payment.jpg"" alt="" height ="150" width="150" class=""/></a>
+      <h4>Membership points&nbsp;</h4>
+      <p class="tag">What we offer:</p>
+      <p class="text_column">By using us you can gain points which you can redeem for various items or discounts</p>
+    </div>
+    <div class="thumbnail"> <a href="#"><img src="images/booking.jpg" alt="" height ="160" width="255" class="cards"/></a>
+      <h4>Booking</h4>
+      <p class="tag">What we offer:</p>
+      <p class="text_column">By being a member you'll be notified any time there is a cancellation allowing you to get earlier bookings&nbsp;</p>
+    </div>
+  </div>
+	
+  <div class="sketchfab-embed-wrapper" >
+<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/old-rusty-car-2-544aa41de67b48cf89f8fcc2bb06e8f4?utm_medium=embed&utm_campaign=share-popup&utm_content=544aa41de67b48cf89f8fcc2bb06e8f4" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"></a> <a href="https://sketchfab.com/kryik1023?utm_medium=embed&utm_campaign=share-popup&utm_content=544aa41de67b48cf89f8fcc2bb06e8f4" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"></a><a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=544aa41de67b48cf89f8fcc2bb06e8f4" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"></a></p></div>
+	<div class="sketchfab-embed-wrapper">
+<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/porsche-mission-e-0409bebc403048ca94ee4fdd9d08b695?utm_medium=embed&utm_campaign=share-popup&utm_content=0409bebc403048ca94ee4fdd9d08b695" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> </a>&nbsp;<a href="https://sketchfab.com/virtualstudio?utm_medium=embed&utm_campaign=share-popup&utm_content=0409bebc403048ca94ee4fdd9d08b695" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"></a> <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=0409bebc403048ca94ee4fdd9d08b695" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"></a></p></div>
+  <div class="gallery" style="box-sizing: content-box">
+    <div  class="thumbnail2" >
+      <h4>Best of all</h4>
+
+    </div>
+    <div  class="thumbnail2" > <a href="#">
+</a>
+      <h4>Its free to sign up</h4>
+    </div>
+  </div>
+  <!-- Footer Section -->
+  <div class="button">Book Now </div>
+  <footer id="contact">
+    <p class="hero_header">GET IN TOUCH TODAY</p>
+<div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel" style="background-color: white">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active"> <img src="images/carbrake.jpg" alt="First slide" width="600" height="400" class="d-block mx-auto">
+      <div class="carousel-caption">
+        <h5>Brake repairs</h5>
+<p>Replacement, fluid changes, part ordering</p>
+      </div>
+    </div>
+    <div class="carousel-item"> <img class="d-block mx-auto" src="images/Figure-1-Vehicle-engine.jpg" width="600" height="400" alt="Second slide">
+      <div class="carousel-caption">
+        <h5>Engine repairs</h5>
+        <p>Checkups, O2 sensor cleaning, fluid changes</p>
+      </div>
+    </div>
+    <div class="carousel-item"> <img class="d-block mx-auto" src="images/Shock-absorbers.jpg" width="600" height="400" alt="Third slide">
+      <div class="carousel-caption">
+        <h5 style="color: black">Suspension repairs</h5>
+        <p style="color: black">Suspension lowering and heightening, replacement, part ordering</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next"> <span class="carousel-control-next-icon" style="background-color: black" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap-4.4.1.js"></script>
+</footer>
+  <!-- Copyrights Section -->
+  <div class="copyright">&copy;2025 - <strong>GRID</strong></div>
+</div>
+<!-- Main Container Ends -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap-4.4.1.js"></script>
+</body>
 </html>
